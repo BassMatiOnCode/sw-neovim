@@ -1,7 +1,306 @@
-<html><body>
+!doctype HTML><html><head>
+<style>
+table > caption {
+	white-space : nowrap ;
+	text-align : left ;
+	color : #999 ;
+	padding-bottom : 5px ;
+	font-style : italic ;
+	}
+table.flat-borders, table.flat-borders td, table.flatborders th {
+	border : 1px solid silver ;
+	border-collapse : collapse ;
+	}
+table.flat-borders td, table.flatborders th {
+	padding : 5px 20px ;
+	}
+</style>
+</head><body>
 
 <h1>Neovim</h1>
 
-<p></p>
+<p>There are several operating <i>modes</i>:</p>
+<ol>
+<li>Normal</li>
+<li>Insert</li>
+<li>Visual</li>
+<li>Command-line</li>
+</ol>
 
+<p>The <tt>normal mode</tt> is active when you open a file and navigate with the <tt>hjkl</tt> or the usual keyboard navigation keys or key combinations. This mode is used to navigate, delete, copy and paste. To return to normal mode, type <tt>ESC</tt>.</p>
+
+<p>The <tt>insert mode</tt> is entered when you type <tt>i</tt> in normal mode. There are more (<tt>iIaAoO</tt>), look them up in the commad overview. Insert mode is used for <em>inserting text</em>. You can still delete text or navigate with the keyboard navigation keys (<tt>LEFT</tt>, <tt>RIGHT</tt>, <tt>UP</tt>, <tt>DOWN</tt>, <tt>PGUP</tt>, <tt>PGDN</tt>, <tt>HOME</tt>, <tt>END</tt>), but in general it is better to return to normal mode for that.</p>
+
+<p>The <tt>visual mode</tt> is entered when you type <tt>v</tt> in the normal mode and is used to select text with the navigation keys to cut or copy or perform other actions.</p>
+
+<p>The <tt>command line mode</tt> is entered when you type <tt>:</tt> in the normal mode. It is used to enter commands and execute them, such as write (<tt>w</tt>), quit (<tt>q</tt>) and search and replace.</p>
+
+<p>The current mode is indicated in the bottom line, it shows --insert-- when in insert mode, --visual-- when in visual mode, a block cursor when in command mode or just nothing when in normal mode.</p>
+
+<p>Each mode comes with a specific set of commands.</p>
+ 
+
+
+<p>The screen is divided vertically into sections and the command line at the bottom. Each section displays a file. The command line is used to enter Neovim commands. Pressing <tt>ESC</tt> on the keyboard takes you to the command line. Then you can type a sequence of characters to enter the command. When finished, press <tt>ENTER</tt> on the keyboard to execute the command.</p>
+
+<p>The command <tt>:q!</tt> (quit forced) will take you to the exit without saving changes. The command <tt>:wq</tt> means "write and quit".</p>
+
+<p>The cursor in normal (command) mode is a block cursor. In insert mode, it is a vertical bar.</p>
+
+<p>Commands are case-sensitive!</p>
+
+<p>Cursor navigation keys:</p>
+<dl>
+<dt><tt>h</tt></dt><dd>Cursor left</dd>
+<dt><tt>j</tt></dt><dd>down</dd>
+<dt><tt>k</tt></dt><dd>up</dd>
+<dt><tt>l</tt></dt><dd>right</dd>
+<dt><tt>LEFT</tt></dt><dd>left</dd>
+<dt><tt>RIGHT</tt></dt><dd>right</dd>
+<dt><tt>UP</tt></dt><dd>up</dd>
+<dt><tt>DOWN</tt></dt><dd>down</dd>
+<dt><tt>PGUP</tt></dt><dd>Top of screen</dd>
+<dt><tt>PGDN</tt></dt><dd>Bottom of screen</dd>
+<dt><tt>POS1</tt></dt><dd>Begin of line</dd>
+<dt><tt>END</tt></dt><dd>End of line</dd>
+<dt><tt>CTRL+POS1</tt></dt><dd>Begin of file</dd>
+<dt><tt>CTRL+END</tt></dt><dd>End if file</dd>
+</dl>
+
+<p>Note that left and right stop working at the beginning or end of the line. The keys <tt>hjkl</tt> don't function in insert mode, but you can use the arrow keys to navigate the cursor. Other keys:</p>
+
+<dl>
+<dt><tt>x</tt></dt><dd>Delete character under cursor</dd>
+<dt><tt>i</tt></dt><dd>Insert text</dd>
+<dt><tt>A</tt></dt><dd>Append</dd>
+<dt><tt></tt></dt><dd></dd>
+<dt><tt></tt></dt><dd></dd>
+<dt><tt></tt></dt><dd></dd>
+</dl>
+
+<ol>
+<li><p>Start Neovim</p>
+	<p>There is a single line at the bottom of the window, called command line. Typing <tt>:</tt> takes you to the command line. Then you can enter commands, a sequence of characters, terminated by pressing the <tt>Enter</tt> key.</p></li>
+<li><p>Type <tt>:help</tt></p>
+	<p>This opens the (read-only) help document at the top of the window. You can navigate it the document with the usual <tt>arrow</tt> keys on the keyboard. The combination <tt>Ctrl+Pos1</tt> takes you to the top of the document. You can doubleclick on links that carry you to another location in the document. You can doubleclick on any word to jump to its explanation.</p></li>
+<li><p>Type <tt>:q</tt> to quit working on the help document. You are taken "back" to the empty file that was automatically created upon the Neovim start.</p></li> 
+</ol>
+
+<h2 cbc>Running the Tutor</h2><div>
+
+<dl>
+<dt><tt>ESC-u</tt></dt><dd>Undo, reverts the last command. In the help text <tt>u</tt> without <tt>ESC</tt> is sufficient.</dd>
+<dt><tt>ENTER</tt></dt><dd></dd>
+<dt><tt>MB3</tt>, <tt>MMB</tt> (mouse middle button)</dt><dd>Clipboard paste</dd>
+ 
+</dl>
+
+<!--h2--Running the Tutor--></div>
+
+<h2 cbc>Help</h2><div>
+
+<p>Pressing <tt>Enter</tt> on a link takes you to the linked topic. <tt>K</tt> on any word takes you to the associated documentation, it exists.</p>
+
+<!--h2--Help--></div>
+
+<h2 cbc>Commands in Normal Mode</h2><div>
+
+<p>Some commands can be combined with a move command: <tt>CMD MOVE</tt>. For example, <dd>d</dd> (delete), and <tt>MOVE</tt> is one of <tt>e</tt> (end of word), <tt>w</tt> (start of next word) or <tt>$</tt> (end of line). If you type the move argument multiple times, the cursor will move accordingly. For example, try <tt>deee</tt>.</p>
+
+<p>Repeated command: A number n>0 before a command repeats the commhand n times.</p> 
+
+<dl>
+<dt>Delete character under cursor</dt><dd><pre>x</pre></dd>
+
+<dt>Delete characters, then insert mode<dt><dd><pre>9s</pre></dd>
+
+<dt>Delete entire line</dt><dd><pre>dd</pre></dd>
+
+<dt>Delete to start of next word</dt><dd><pre>de</pre></dd>
+
+<dt>Delete to end of line</dt><dd><pre>d$</pre></dd>
+
+<dt>Delete word</dt><dd><pre>dw</pre></dd>
+
+<dt>Erase the line and enter insert mode</dt><dd><pre>S</pre></dd>
+
+<dt>Move to end of line</dt><dd><pre>$</pre></dd>
+
+<dt>Move to end of next word</dt><dd><pre>e</pre></dd>
+
+<dt>Move to start of line</dt><dd
+<pre>0</pre></dd>
+
+<dt>Move to start of next word</dt><dd><pre>w</pre></dd>
+
+<dt>Replace a single character</dt><dd><pre>r</pre></dd>
+
+<dt>Scroll down a line</dt><dd><pre>CTRL+e</pre></dd>
+
+<dt>Scroll down half a screen</dt><dd><pre>CTRL+d</pre></dd>
+
+<dt>Scroll up a line</dt><dd><pre>CTRL+y</pre></dd>
+
+<dt>Scroll up half a screen</dt><dd><pre>CTRL+u</pre></dd>
+
+<dt>Undo command</dt><dd><pre>u</pre></dd>
+
+<dt>Undo (restore) line</dt><dd><pre>U</pre></dd>
+</dl>
+
+<!--h2--Commands in Normal Mode--></div>
+
+<h2 cbc>Commands in Command Line Mode</h2><div>
+
+<dl>
+<dt>Edit file</dt><dd><pre>:edit &lt;filename&gt;</pre></dd>
+
+<dt>Jump to the first match</dt><dd><pre>ENTER</tt></dd>
+
+<dt>Jump to next match</dt><dd><pre>n</pre></dd>
+
+<dt>Jump to the previous match</dt><dd><pre>N</pre></dd>
+
+<dt>New file</dt><dd><pre>:new &lt>filename&gt;</pre></dd>
+
+<dt>Remove match highlighting</dt><dd><pre>:nohlsearch</pre></dd>
+
+<dt>Save as</dt><dd><pre>:w filename</pre></dd>
+
+<dt>Search on the left</dt><dd><pre>?{pattern}</pre></dd>
+
+<dt>Search on the right</dt><dd><pre>/{pattern}</pre></dd>
+
+<dt>View path and filename</dt><dd><pre>:echo expand('%:p')</pre></dd>
+
+<dt>Write (save file)</dt><dd><pre>:w</pre></dd>
+
+<dt>Write and quit</dt><dd><pre>:wq</pre></dd>
+</dl>
+
+<!--h2--Commands in Command Line Mode--></div>
+
+<h2 cbc>Commands in Visual Mode</h2><div>
+
+<p>To enter character selection mode, type <tt>v</tt> in normal mode. Use the navigation keys or key combinations to select text. Then press a command key to execute a command on the selection. You will automatically be returned to normal mode then.</p>
+
+<p>To enter line selection mode, type <tt>SHIFT+v</tt> in normal mode. Use the navigation keys to select entire lines of text.</p>
+
+<p>To enter visual block mode, type <tt>CTRL+v</tt> in normal mode. Then use navigation keys to select a block of text. This is useful when working with tables.</p>
+
+<dl>
+<dt>Delete selection</dt><dd><pre>DEL</pre>
+<pre>d</pre></dd>
+
+<dt>Switch to visual line mode</dt><dd><pre>ip</pre>
+<p>This stands for "inner paragraph".</dd>
+</dl>
+
+<!--h2--Commands in Visual Mode--></div>
+
+
+
+<h2 cbc>Navigating in Documents</h2><div>
+
+<table class="flat-borders">
+<caption>Jumping to positions<tbody><tr>
+	<td>CTRL+o</td>
+	<td>Jump back</td>
+</tr><tr>
+	<td>`. or '.</td>
+	<td>Jump to last edit</td>
+</tr><tr>
+	<td>CTRL+i</td>
+	<td>Jump forward</td>
+</tr><tr>
+	<td>:jumps</td>
+	<td>View jump list</td>
+</tr></tbody></table>
+
+<table class="flat-borders">
+<caption>Markers</caption><tbody><tr>
+	<td>ma to mz</td>
+	<td>Set marker a to z</td>
+</tr><tr>
+	<td>`a to `z</td>
+	<td>Jump to marker a to z</td>
+</tr><tr>
+	<td>'a to 'z</td>
+	<td>Jump to start of line with markers a to z</td>
+</tr></tbody></table>
+
+<!--h2--Navigating in Documents--></div>
+
+
+
+<h2 cbc>Search and Replace</h2><div>
+
+<p>The following commands are given in standard mode:</p>
+
+<table class="flat-borders"><caption>Commands in normal mode</caption><tbody><tr>
+	<td>/</td>
+	<td>Search forward</td>
+</tr><tr>
+	<td>?</td>
+	<td>Search backwards</td>
+</tr><tr>
+	<td>//</td>
+	<td>Search again</td>
+</tr><tr>
+	<td>*</td>
+	<td>Search forward word under cursor</td>
+</tr><tr>
+	<td>#</td>
+	<td>Search backward word under cursor</td>
+</tr><tr>
+	<td>g*</td>
+	<td>Search forward partial word under cursor</td>
+</tr><tr>
+	<td>g#</td>
+	<td>Search backward partial word under cursor</td>
+</tr></tbody></table>
+
+<p>Use CTRL+o to return to the position before the search.</p>
+
+<p>The following commands are given in command mode:</p>
+
+<table><caption>Search options</caption><tbody><tr>
+	<td>/pattern\C</td>
+	<td>Case-insensitive</td>
+</tr><tr>
+	<td>/pattern\c</td>
+	<td>Case-sensitive</td>
+</tr></tbody></table>
+
+<h3 cbc>References</h3><div>
+
+<dl>
+<dt><a href="https://thevaluable.dev/vim-search-find-replace/">Vim Search and Replace With Examples</a></dt>
+<dd>by Matthieu Cneude</dd>
+</dl>
+
+<!--h3--References--></div>
+
+<!--h2--Search and Replace--></div>
+
+<h2 cbc>Tabstops</h2><div>
+
+<p>To set tabstop width, use the following command:</p>
+<pre>
+:set tabstop=4 shiftwidth=4
+</pre>
+<p>If you want to expand tabs to spaces, use</p>
+<pre>
+:set tabstop=5 shiftwidth=4 expandtabC:\Users\usp\AppData\Local\nvim-data\swap\E%%github%bassmationcode%sw-neovim%docs%neovim.htm.swp"
+</pre>
+
+
+<!--h2--Tabstops--></div>
+
+
+<h2 cbc>.editorconfig</h2><div>
+
+<p>You can us a .editorconfig file in the root directory of your project to configure Neovim.</p>
+
+<!--h2--.editorconfig--></div>
 </body></html>
